@@ -15,10 +15,10 @@ class Database:
                 database=self.database
             )
             if self.my_database.is_connected():
-                print("INFO Connected with database")
+                print("[INFO] Connected with database")
         
         except connector.Error as e:
-            print("INFO Connection Failed")
+            print("[INFO] Connection Failed")
             raise ValueError(str(e))
 
     def insert_data(self, dataframe) :
@@ -30,10 +30,10 @@ class Database:
             engine = create_engine(f"mysql+mysqlconnector://{self.username}:{self.password}@localhost/{self.database}")
             dataframe.to_sql(name='daraz_records', con=engine, if_exists='replace', index=True)
             self.my_database.commit()
-            print("Data inserted successfully!")
+            print("[INFO] Data inserted successfully!")
             
         except connector.Error as e:
-            print("INFO Connection Failed")
+            print("[INFO] Connection Failed")
             raise ValueError(str(e))
     
     def show_database(self) -> None: 
@@ -46,6 +46,6 @@ class Database:
             print("\n")
             
     def __del__(self):
-        print("INFO Closing database connection")
+        print("[INFO] Closing database connection")
         self.cursor.close()
         self.my_database.close()

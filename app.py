@@ -1,43 +1,13 @@
-import logging
-import sys
+from scheduling import MyScheduler
+import schedule
+import time
 
-from scraper import Scrapper
-from database import Database
+run_all_time = True # False to run every tuesday at 9:00 AM
 
-import pandas as pd
+# instance of the scheduler
+scheduler = MyScheduler(run_all_time)
 
-logging.basicConfig(filename="scraper.log",
-                    format='%(asctime)s %(message)s',
-                    filemode='w',
-                    level=logging.INFO)
-
-logger = logging.getLogger()
-
-# Create a stream handler and set its level to INFO
-stream_handler = logging.StreamHandler(sys.stdout)
-stream_handler.setLevel(logging.INFO)
-
-# Create a formatter for the stream handler
-formatter = logging.Formatter('%(asctime)s %(message)s')
-
-# Set the formatter for the stream handler
-stream_handler.setFormatter(formatter)
-
-# Add the stream handler to the logger
-logger.addHandler(stream_handler)
-
-scraper = Scrapper("https://www.daraz.pk/", "laptop")
-logger.info("Scrapping started")
-
-# logger.info("Connecting to database")
-database = Database("talha", "izmeh", "mydatabase")
-
-
-scraper.scrap_product(pages=1)
-dataframe = scraper.to_dataframe()
-
-scraper.show_dataframe()
-scraper.show_dataframe_info()
-
-database.insert_data(dataframe)
-database.show_database()
+while True:
+    # Run the scheduled jobs
+    schedule.run_pending()
+    time.sleep(1)

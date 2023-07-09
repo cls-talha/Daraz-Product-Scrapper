@@ -23,17 +23,17 @@ class Scrapper:
 
             search_btn = driver.find_element(By.XPATH, '//*[@id="topActionHeader"]/div/div[2]/div/div[2]/form/div/div[2]/button')  # find search button
             search_btn.click()
-            print("Search button clicked")
+            print("[INFO] Search button clicked")
 
             # how many entries are there
             total_prod = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div/div/div[1]/div[1]/div/div[1]/div/div')
-            print("TOTAL Entries Found:", total_prod.text)
+            print("[INOF] ", total_prod.text)
             time.sleep(2)
             id_counter = 0  # Counter for ID
 
             for i in range(pages):  # Iterate through pages
                 products = driver.find_elements(By.CLASS_NAME, 'gridItem--Yd0sa')
-                print("Products found:", len(products))
+                print("[INFO] Total Products found:", len(products))
                 
                 for product in products:
                     product_info = product.text
@@ -63,7 +63,7 @@ class Scrapper:
                 next_btn = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div/div/div[1]/div[3]/div/ul/li[9]/a')
                 if next_btn.is_enabled():
                     driver.execute_script("arguments[0].click();", next_btn)
-                    print(f'Button is pressed now we are on page: {i+1}')
+                    print(f'[INFO] Button is pressed, page#: {i+1}')
                     time.sleep(7)  # Wait for the page to load
                 else:
                     raise NoSuchElementException("No more pages to load")

@@ -1,1 +1,5 @@
-2023-07-08 23:57:11,148 Scrapping started
+2023-07-09 13:03:06,050 Collecting product information
+2023-07-09 13:03:06,050 Collecting database credentials
+2023-07-09 13:03:06,054 Product scrapping started
+2023-07-09 13:03:52,236 Converting to dataframe
+2023-07-09 13:03:52,359 Inserting data into database
