@@ -9,11 +9,16 @@ The Web Scraping Bot is a Python application that automates the process of scrap
 To run the web scraping bot, follow these steps:
 
 1. Clone the project repository from GitHub:
-git clone https://github.com/cls-talha/web-scraping-bot.git
+
+```bash
+git clone https://github.com/cls-talha/Daraz-Product-Scrapper.git
+```
 
 2. Install the required Python packages by running the following command:
-pip install -r requirements.txt
 
+```bash
+pip install -r requirements.txt
+```
 
 3. Ensure that you have the Chrome web browser installed on your system.
 
